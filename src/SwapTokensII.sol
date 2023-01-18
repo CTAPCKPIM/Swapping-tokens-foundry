@@ -7,7 +7,7 @@ import '../src/interfaces/IUniswapV2Router02.sol';
 import '../src/interfaces/IWETH9.sol';
 
 /**
- * @author by CTAPCKPIM
+ * @author by CTAPCKPIM;
  * @title Smart contract for token exchange;
  * @notice This smart contract uses Uniswap to exchange tokens;
  */
@@ -44,7 +44,6 @@ contract SwapTokensII{
         // Need to approve the token: msg.sender > address(this), amount;
         weth.transferFrom(msg.sender, address(this), _amountIn);
         weth.approve(address(router), _amountIn);
-        uint256 balance = usdc.balanceOf(msg.sender);
         address[] memory path = new address[](2);
         path[0] = WETH;
         path[1] = USDC;
@@ -57,8 +56,6 @@ contract SwapTokensII{
             msg.sender,
             block.timestamp
         );
-        // The balance must be changed minimum on {amountOutMin[1]};
-        require(usdc.balanceOf(msg.sender) >= balance + amountOutMin[1], 'Balance not changed');
         emit Swapped(amounts[1], msg.sender);
         // Amounts[1] = USDC amount;
         return amounts[1]; 
@@ -77,7 +74,6 @@ contract SwapTokensII{
         // Need to approve the token: msg.sender > address(this), amount;
         usdc.transferFrom(msg.sender, address(this), _amountIn);
         usdc.approve(address(router),  _amountIn);
-        uint256 balance = weth.balanceOf(msg.sender);
         address[] memory path = new address[](2);
         path[0] = USDC;
         path[1] = WETH;
@@ -90,8 +86,6 @@ contract SwapTokensII{
             msg.sender,
             block.timestamp
         );
-        // The balance must be changed minimum on {amountOutMin[1]}; 
-        require(weth.balanceOf(msg.sender) >= balance + amountOutMin[1], 'Balance not changed');
         emit Swapped(amounts[1], msg.sender);
         // Amounts[1] = WETH amount;
         return amounts[1];
