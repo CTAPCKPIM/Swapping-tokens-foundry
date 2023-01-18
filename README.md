@@ -5,7 +5,7 @@ __Smart contract__ for swapping tokens, and testing with help ___[Foundry](https
 
 ### Functions of the smart contract:
  + `swapTokenAToB();` - the function of swapping a token A => B; 
- + `swapTokenBToA();` - the function of swapping a token A => B; 
+ + `swapTokenBToA();` - the function of swapping a token B => A; 
 
 ## __Tokens:__
 - [WETH](https://etherscan.io/address/0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2);
@@ -57,10 +57,11 @@ If you want to see your _coverage_ in tests in the [__fork__](https://book.getfo
 
     forge coverage --fork-url <your_rpc_url>
 
-#### __About tests [here](https://book.getfoundry.sh/forge/writing-tests#writing-tests)__
+#### __How to write tests using [Forge Standart lib](https://book.getfoundry.sh/forge/writing-tests#writing-tests)__
 
-#### __Used cheat codes [example](https://book.getfoundry.sh/forge/cheatcodes#cheatcodes):__
+#### __[Сheat codes](https://book.getfoundry.sh/cheatcodes/#cheatcode-types) are used for manipulate the state of the blockchain, as well as test for specific reverts and events.__
 
+#### __Code example:__
 ```Solidity
 function testExample() public {
     address alice = makeAddr("alice"); // Creating the address 0x4Fa...Tt
@@ -75,3 +76,39 @@ function testExample() public {
     IERC20(address).transferFrom(alice, bob, amountTransfer);
 }
 ```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
